@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>张金风（涵之）| 个人履历主页</title>
+    <title data-i18n="meta.title">Jinfeng Zhang | Personal Portfolio</title>
     <meta
       name="description"
-      content="张金风（涵之）完整履历主页，中英文切换，全量展示工作经历、项目细节、个人优势与核心技能。"
+      content="Jinfeng (Hanzhi) Zhang — Cross-border strategy builder, global partnerships operator, and systems-minded business leader."
+      data-i18n-content="meta.description"
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -20,8 +21,11 @@
               accent: "#6D7B8D",
             },
             fontFamily: {
-              serif: ['"Cormorant Garamond"', '"Noto Serif SC"', "serif"],
-              sans: ['"Inter"', '"Noto Sans SC"', "sans-serif"],
+              serif: ['"Cormorant Garamond"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+            letterSpacing: {
+              airy: "0.08em",
             },
           },
         },
@@ -30,112 +34,271 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@200;300;400&family=Noto+Sans+SC:wght@300;400&family=Noto+Serif+SC:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@200;300;400&display=swap"
       rel="stylesheet"
     />
     <style>
       .fade-in {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(20px);
         transition: opacity 700ms ease, transform 700ms ease;
       }
       .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
       }
-      .lang-pane {
-        display: none;
-        opacity: 0;
-        transform: translateY(6px);
+      .hero-slice {
+        clip-path: polygon(16% 0, 100% 0, 84% 100%, 0 100%);
+      }
+      .lang-fade {
+        opacity: 0.32;
+        transform: translateY(4px);
+      }
+      main {
         transition: opacity 260ms ease, transform 260ms ease;
       }
-      .lang-pane.active {
-        display: block;
-      }
-      .lang-pane.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .resume-copy {
+      .resume-raw {
         white-space: pre-wrap;
         word-break: break-word;
       }
-      .glass-line {
-        border: 0.5px solid #d2d2d7;
-      }
     </style>
   </head>
-  <body class="bg-paper text-ink font-sans antialiased">
-    <header class="fixed inset-x-0 top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur">
-      <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+  <body class="bg-paper text-ink font-sans antialiased selection:bg-ink selection:text-paper">
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-paper/90 backdrop-blur"
+    >
+      <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 md:px-10">
         <p class="font-serif text-xl tracking-wide">J. Zhang</p>
-        <button
-          id="langToggle"
-          class="glass-line rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition hover:bg-white"
-          aria-label="Switch language"
-        >
-          CN / EN
-        </button>
+        <div class="flex items-center gap-4">
+          <ul class="hidden gap-7 text-xs uppercase tracking-[0.16em] md:flex">
+            <li><a class="transition hover:opacity-60" href="#about" data-i18n="nav.about">About</a></li>
+            <li><a class="transition hover:opacity-60" href="#experience" data-i18n="nav.work">Work</a></li>
+            <li><a class="transition hover:opacity-60" href="#skills" data-i18n="nav.skills">Skills</a></li>
+            <li><a class="transition hover:opacity-60" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+          <button
+            id="langToggle"
+            class="rounded-full border-[0.5px] border-line px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-ink/80 transition duration-300 hover:bg-white"
+            aria-label="Switch language"
+            data-i18n="nav.lang"
+          >
+            CN / EN
+          </button>
+        </div>
       </nav>
     </header>
 
-    <main class="mx-auto mt-20 w-full max-w-7xl px-6 pb-20 md:px-10">
-      <section class="grid gap-10 py-10 lg:grid-cols-[0.92fr_1.08fr]">
-        <aside class="fade-in space-y-8 lg:sticky lg:top-28 lg:self-start">
-          <img
-            src="avatar.jpg"
-            alt="Portrait of Jinfeng Zhang"
-            class="glass-line h-[22rem] w-full rounded-xl object-cover md:h-[26rem]"
-          />
-          <div class="glass-line rounded-xl bg-white/40 p-6">
-            <div class="lang-pane active show" data-lang="cn">
-              <p class="text-xs uppercase tracking-[0.2em] text-ink/60">核心信息</p>
-              <h1 class="mt-3 font-serif text-4xl leading-tight md:text-5xl">张金风（涵之）</h1>
-              <p class="mt-4 text-sm leading-7 text-ink/85">
-                中共党员<br />
-                联系电话：17611575075<br />
-                电子邮箱：coralzhanghorse@gmail.com
-              </p>
-              <p class="mt-4 text-sm leading-7 text-ink/85">
-                教育背景：<br />
-                中国农业大学 · 动物科学（农学） · 硕士研究生 (2016 - 2018)<br />
-                青岛农业大学 · 动物科学（马科学） · 本科 (2010 - 2014)
-              </p>
+    <main>
+      <section class="relative flex min-h-screen items-center overflow-hidden px-6 pt-24 md:px-10">
+        <div class="hero-slice absolute right-[-15%] top-0 h-full w-[65%] bg-gradient-to-b from-line/50 via-transparent to-line/25"></div>
+        <div class="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+          <div class="fade-in space-y-7">
+            <p class="text-xs uppercase tracking-[0.2em] text-ink/70" data-i18n="hero.kicker">Personal Portfolio</p>
+            <h1 class="font-serif text-6xl leading-[0.92] md:text-8xl">Jinfeng Zhang</h1>
+            <p class="max-w-xl text-base font-light leading-relaxed text-ink/85 md:text-lg" data-i18n="hero.statement">
+              Global Strategy Operator bridging policy-level diplomacy, technical systems, and
+              cross-border business growth.
+            </p>
+            <a
+              href="#contact"
+              class="inline-block border-b border-accent pb-1 text-xs uppercase tracking-[0.2em] text-accent transition hover:opacity-70"
+              data-i18n="hero.cta"
+            >
+              Connect
+            </a>
+          </div>
+          <div class="fade-in md:justify-self-end">
+            <img
+              src="avatar.jpg"
+              alt="Portrait of Jinfeng Zhang"
+              class="h-[23rem] w-full max-w-sm rounded-xl border-[0.5px] border-line object-cover shadow-[0_14px_34px_rgba(17,17,19,0.07)] md:h-[30rem]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 md:py-28">
+        <div class="fade-in grid gap-10 md:grid-cols-[0.7fr_1.3fr]">
+          <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="about.kicker">About</p>
+          <div class="space-y-8">
+            <p class="text-lg font-light leading-relaxed text-ink/90 md:text-xl" data-i18n="about.body">
+              I build operations from zero to one and translate complexity into clear execution.
+              From delivering nation-level equestrian conferences to scaling international trade
+              structures, I combine strategic judgment with disciplined systems thinking to create
+              outcomes that are globally fluent and operationally sustainable.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="rounded-full border-[0.5px] border-line bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-ink/80"
+                data-i18n="about.tag1"
+                >Equestrian</span
+              >
+              <span
+                class="rounded-full border-[0.5px] border-line bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-ink/80"
+                data-i18n="about.tag2"
+                >Scuba Diving</span
+              >
+              <span
+                class="rounded-full border-[0.5px] border-line bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.18em] text-ink/80"
+                data-i18n="about.tag3"
+                >Cross-cultural Communication</span
+              >
             </div>
-            <div class="lang-pane" data-lang="en">
-              <p class="text-xs uppercase tracking-[0.2em] text-ink/60">Core Profile</p>
-              <h1 class="mt-3 font-serif text-4xl leading-tight md:text-5xl">Jinfeng Zhang (Hanzhi)</h1>
-              <p class="mt-4 text-sm leading-7 text-ink/85">
-                CPC Member<br />
-                Phone: 17611575075<br />
-                Email: coralzhanghorse@gmail.com
-              </p>
-              <p class="mt-4 text-sm leading-7 text-ink/85">
-                Education:<br />
-                China Agricultural University · Animal Science (Agronomy) · Master's Degree (2016 - 2018)<br />
-                Qingdao Agricultural University · Animal Science (Equine Science) · Bachelor's Degree (2010 - 2014)
-              </p>
+            <div class="fade-in mt-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+              <div class="space-y-3">
+                <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="life.kicker">Work & Life</p>
+                <h3 class="font-serif text-3xl leading-tight md:text-4xl" data-i18n="life.title">
+                  Discipline, Curiosity, and Inner Drive
+                </h3>
+                <p class="max-w-xl text-sm font-light leading-relaxed text-ink/85 md:text-base" data-i18n="life.body">
+                  My work is rigorous, but never mechanical. Time with horses and underwater training keeps my judgment calm,
+                  my focus precise, and my leadership deeply human in high-pressure contexts.
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <figure class="group col-span-2 overflow-hidden rounded-lg border-[0.5px] border-line bg-paper p-1">
+                  <img src="life1.jpg" alt="Life photo 1" class="h-52 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02] md:h-60" />
+                  <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="life.cap1">Depth training, calm mindset</figcaption>
+                </figure>
+                <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line bg-paper p-1 md:translate-y-5">
+                  <img src="life2.jpg" alt="Life photo 2" class="h-40 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                  <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="life.cap2">Composure under pressure</figcaption>
+                </figure>
+                <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line bg-paper p-1">
+                  <img src="life3.jpg" alt="Life photo 3" class="h-40 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                  <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="life.cap3">Curiosity beyond routine</figcaption>
+                </figure>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <figure class="fade-in glass-line overflow-hidden rounded-xl bg-white/40 p-1">
-            <img src="work1.jpg" alt="Work imprint" class="h-56 w-full rounded-lg object-cover" />
-            <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60">
-              Work Imprint
-            </figcaption>
-          </figure>
-          <figure class="fade-in glass-line overflow-hidden rounded-xl bg-white/40 p-1">
-            <img src="life1.jpg" alt="Life imprint" class="h-56 w-full rounded-lg object-cover" />
-            <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60">
-              Life Imprint
-            </figcaption>
-          </figure>
-        </aside>
+      <section id="experience" class="border-y border-line/80 bg-white/60">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <div class="fade-in mb-10 flex items-end justify-between gap-6">
+            <h2 class="font-serif text-4xl md:text-5xl" data-i18n="exp.title">Experience</h2>
+            <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="exp.kicker">Selected Work</p>
+          </div>
 
-        <section class="fade-in space-y-8">
-          <div class="glass-line rounded-xl bg-white/40 p-5 md:p-8">
-            <div class="lang-pane active show resume-copy text-[15px] leading-8 text-ink/90" data-lang="cn">
-个人简历
+          <div class="space-y-10">
+            <article class="fade-in border-l border-line pl-6 md:pl-8">
+              <p class="text-xs uppercase tracking-[0.16em] text-ink/55" data-i18n="exp.item1.date">2025.03 — Present</p>
+              <h3 class="mt-3 text-xl font-light md:text-2xl" data-i18n="exp.item1.role">
+                Executive Assistant to General Manager & Core Member, International Trade
+              </h3>
+              <p class="mt-1 text-sm tracking-wide text-ink/70" data-i18n="exp.item1.company">
+                Shandong Fangding Storage Equipment Manufacturing Co., Ltd.
+              </p>
+              <p class="mt-4 max-w-4xl font-light leading-relaxed text-ink/85" data-i18n="exp.item1.body">
+                Designed end-to-end SOP infrastructure across export development, inquiry handling, client conversion, and post-sales delivery; also supported governance optimization and the launch blueprint of an independently accounted foreign trade entity.
+              </p>
+            </article>
+            <article class="fade-in border-l border-line pl-6 md:pl-8">
+              <p class="text-xs uppercase tracking-[0.16em] text-ink/55" data-i18n="exp.item2.date">2024.01 — 2025.02</p>
+              <h3 class="mt-3 text-xl font-light md:text-2xl" data-i18n="exp.item2.role">
+                R&D Lead / Product Program Owner
+              </h3>
+              <p class="mt-1 text-sm tracking-wide text-ink/70" data-i18n="exp.item2.company">
+                Shandong Deep Blue Animal Healthcare
+              </p>
+              <p class="mt-4 max-w-4xl font-light leading-relaxed text-ink/85" data-i18n="exp.item2.body">
+                Directed full-lifecycle 0-1 development of 10+ equine nutrition products, ensuring compliance with international anti-doping and nutritional standards while integrating R&D with manufacturing, branding, and go-to-market execution.
+              </p>
+            </article>
+            <article class="fade-in border-l border-line pl-6 md:pl-8">
+              <p class="text-xs uppercase tracking-[0.16em] text-ink/55" data-i18n="exp.item3.date">2014.09 — 2022.05</p>
+              <h3 class="mt-3 text-xl font-light md:text-2xl" data-i18n="exp.item3.role">
+                Office Director / Executive Secretary / Chief Editor (Former Roles)
+              </h3>
+              <p class="mt-1 text-sm tracking-wide text-ink/70" data-i18n="exp.item3.company">
+                China Horse Industry Association (CHA) & Affiliated Institutions
+              </p>
+              <p class="mt-4 max-w-4xl font-light leading-relaxed text-ink/85" data-i18n="exp.item3.body">
+                Orchestrated world-class equestrian forums and state-level diplomatic programs, coordinated with experts from 30+ countries, contributed to national standards, and drove digital transformation across industry media and knowledge platforms.
+              </p>
+            </article>
+          </div>
+
+          <div class="fade-in mt-16 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-start">
+            <div class="space-y-4">
+              <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="gallery.kicker">Work Imprint</p>
+              <h3 class="font-serif text-3xl leading-tight md:text-4xl" data-i18n="gallery.title">
+                Moments Behind the Milestones
+              </h3>
+              <p class="max-w-xl font-light leading-relaxed text-ink/85" data-i18n="gallery.body">
+                Beyond boardrooms and conference floors, these frames record my real working rhythm: briefing teams, decoding technical details, and carrying ideas from concept to execution.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <figure class="group col-span-2 overflow-hidden rounded-lg border-[0.5px] border-line/90 bg-paper p-1">
+                <img src="work1.jpg" alt="Conference operation moment" class="h-56 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02] md:h-64" />
+                <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="gallery.cap1">Global conference coordination</figcaption>
+              </figure>
+              <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line/90 bg-paper p-1">
+                <img src="work2.jpg" alt="International business meeting" class="h-44 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="gallery.cap2">Cross-cultural briefing</figcaption>
+              </figure>
+              <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line/90 bg-paper p-1 md:translate-y-8">
+                <img src="work3.jpg" alt="Project execution snapshot" class="h-44 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="gallery.cap3">Execution in motion</figcaption>
+              </figure>
+              <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line/90 bg-paper p-1">
+                <img src="work4.jpg" alt="Industrial trade exhibition" class="h-40 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="gallery.cap4">Trade show strategy</figcaption>
+              </figure>
+              <figure class="group overflow-hidden rounded-lg border-[0.5px] border-line/90 bg-paper p-1 md:-translate-y-6">
+                <img src="work5.jpg" alt="Strategic planning session" class="h-40 w-full rounded-md object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <figcaption class="px-2 pb-1 pt-3 text-[11px] uppercase tracking-[0.14em] text-ink/60" data-i18n="gallery.cap5">System design workshop</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 md:py-28">
+        <div class="fade-in mb-10 flex items-center justify-between gap-6">
+          <h2 class="font-serif text-4xl md:text-5xl" data-i18n="skills.title">Skills</h2>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="skills.kicker">Capabilities</p>
+        </div>
+        <div class="fade-in flex flex-wrap gap-3">
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item1">SOP Architecture</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item2">0-1 Business Buildout</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item3">International Trade Operations</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item4">Cross-border Negotiation</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item5">Conference Curation</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item6">Government & Stakeholder Relations</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item7">Bilingual Technical Communication</span>
+          <span class="rounded-md border-[0.5px] border-line bg-white px-4 py-2 text-sm font-light" data-i18n="skills.item8">Strategic Project Orchestration</span>
+        </div>
+      </section>
+
+      <section id="contact" class="border-t border-line bg-white/60">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 md:py-24">
+          <div class="fade-in grid gap-10 md:grid-cols-[0.7fr_1.3fr]">
+            <h2 class="font-serif text-4xl md:text-5xl" data-i18n="contact.title">Contact</h2>
+            <div class="space-y-5 text-base font-light">
+              <p class="max-w-2xl leading-relaxed text-ink/85" data-i18n="contact.body">
+                Open to strategic collaborations in international business development, conference curation, and cross-cultural operations.
+              </p>
+              <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm uppercase tracking-[0.14em]">
+                <a class="transition hover:text-accent" href="mailto:coralzhanghorse@gmail.com" data-i18n="contact.email">Email</a>
+                <a class="transition hover:text-accent" href="https://www.linkedin.com/in/coral-zhang-454a54107/" target="_blank" rel="noreferrer" data-i18n="contact.linkedin">LinkedIn</a>
+                <a class="transition hover:text-accent" href="https://www.instagram.com/coral0410/" target="_blank" rel="noreferrer" data-i18n="contact.instagram">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume-full" class="border-t border-line/80">
+        <div class="mx-auto w-full max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <div class="fade-in mb-8 flex items-end justify-between gap-6">
+            <h2 class="font-serif text-4xl md:text-5xl" data-i18n="raw.title">Full Resume (Original Text)</h2>
+            <p class="text-xs uppercase tracking-[0.2em] text-ink/60" data-i18n="raw.kicker">No Abbreviation</p>
+          </div>
+          <div class="fade-in rounded-xl border-[0.5px] border-line bg-white/50 p-5 md:p-8">
+            <pre class="resume-raw text-sm font-light leading-8 text-ink/90" data-i18n="raw.content">个人简历
 姓名： 张金风（涵之） 政治面貌： 中共党员 联系电话： 17611575075 电子邮箱： coralzhanghorse@gmail.com 教育背景： * 中国农业大学 · 动物科学（农学） · 硕士研究生 (2016 - 2018) * 青岛农业大学 · 动物科学（马科学） · 本科 (2010 - 2014)
 ________________________________________
 个人优势总结（核心竞争力）
@@ -148,9 +311,6 @@ ________________________________________
 工作经历
 2025.03 - 至今 | 山东方鼎仓储设备制造有限公司 | 总经理助理（兼外贸部核心骨干）
 核心职责与成就： * 管理体系标准化： 全面负责外贸部从业务开发、询盘处理、客户跟踪到售后服务的全环节SOP（标准作业程序）搭建，实现业务流程闭环，显著提升了团队协作效率和新员工转化率。 * 战略决策辅助： 协助总经理完善公司整体流程制度与规章体系，参与起草公司级制度文件，作为管理中枢确保公司战略目标在各部门的有效落地。 * 外贸公司实体化运营： 深度参与并成功落地独立核算外贸公司的筹备工作，负责财务预算评估、人才招聘方案制定及全球市场拓展策略的规划。 * 全球市场攻坚与策展： 全程统筹国际行业展会的策划与执行（如展位设计、技术文档准备、海外客商邀约）。在实战中熟练处理重型货架等核心产品的技术交流与订单转化。 * 高阶商务接待： 制定并执行标准化外商接待流程，负责高规格商务翻译、技术考察陪同及商务谈判，凭借敏锐的国际化视野和跨文化沟通技巧，建立并维护了企业的专业国际形象。
-
-<img src="work2.jpg" alt="Work segment photo" class="my-6 glass-line h-52 w-full rounded-lg object-cover" />
-
 2024.01 - 2025.02 | 山东深蓝动物保健品公司 | 研发主管 / 产品项目负责人
 核心职责与成就： * 0-1产品链全生命周期管理： 独立带领技术团队，从市场空白点调研、配方研发、实验验证到量产落地，成功开发出10余款针对赛马的营养添加剂产品。 * 国际标准对接与合规： 深度研究并确保所有产品完全符合国际主流赛马协会（如ISBC）的禁药检测与营养标准，产品成功获得国际市场认可并实现大规模量产。 * 产供销一体化协同： 成功打破研发与生产、销售间的壁垒，参与包装视觉设计、专业产品手册编写及市场准入认证，为公司创造了新的业绩增长点。
 2014.09 - 2022.05 | 中国马业协会（CHA）及下属机构 | 历任办公室主任、执行秘书、主编等职
@@ -160,80 +320,212 @@ ________________________________________
 •	企业管理： 精通SOP流程设计、初创公司运营管理、战略规划执行、团队建设与考核。
 •	外贸实务： 精通全球展会策划、海关政策、国际物流、跨境商务谈判及大客户维护。
 •	国际交流： 具备“白人思维”，擅长处理复杂的跨文化商业冲突与合作。
-•	综合素养： 极强的项目统筹能力、突发事件处理意识、高层公关协作及政府关系维护。
-            </div>
-
-            <div class="lang-pane resume-copy text-[15px] leading-8 text-ink/90" data-lang="en">
-Resume
-Name: Jinfeng Zhang (Hanzhi)  Political Affiliation: CPC Member  Phone: 17611575075  Email: coralzhanghorse@gmail.com  Education: * China Agricultural University · Animal Science (Agronomy) · Master's Degree (2016 - 2018) * Qingdao Agricultural University · Animal Science (Equine Science) · Bachelor's Degree (2010 - 2014)
-________________________________________
-Summary of Personal Strengths (Core Competencies)
-•	End-to-end 0-1 Build Capability: Possesses strong experience in building and managing startup businesses from scratch. Independently led the complete process of a horse-racing product line from market research, R&D, to international certification; successfully assisted in establishing an independently accounted foreign trade company and built a full SOP system from zero, demonstrating outstanding organizational architecture capability.
-•	High-level External Affairs Coordination and Cross-cultural Collaboration: With years of service in a national-level industry association, has strong experience in high-spec external reception and international negotiation. Coordinated international conferences attended by President Xi Jinping, and deeply connected with international organizations such as ISBC and WEVA, as well as experts from more than 30 countries. Possesses deep cross-cultural working capability and can accurately understand foreign logic to achieve efficient international business communication.
-•	Expert in Large-scale Event Curation and Brand Operations: Has top-tier full-case planning and execution experience in large-scale events, including venue selection for world-class conferences, agenda design, invitation of foreign speakers, and integration of government resources. Possesses strong media operations background and has led industry digital transformation and the formulation of multiple national-level industry standards.
-•	Refined Management and SOP Standardization Mindset: Proficient in optimizing enterprise process systems, and skilled at decomposing complex business operations into standardized SOP manuals, with remarkable outcomes in improving team efficiency, reducing onboarding costs, and ensuring replicability.
-•	Composite Professional Background: With a master's degree in agronomy, combines rigorous research thinking with practical experience in industrial manufacturing and international trade, and can quickly translate technical language into market value propositions, achieving an effective integration of technology and business.
-________________________________________
-Work Experience
-2025.03 - Present | Shandong Fangding Storage Equipment Manufacturing Co., Ltd. | Assistant to General Manager (also core member of the foreign trade department)
-Core Responsibilities and Achievements: * Management System Standardization: Fully responsible for building end-to-end SOPs (Standard Operating Procedures) for the foreign trade department, covering business development, inquiry handling, client follow-up, and after-sales service, forming a closed-loop process that significantly improved team collaboration efficiency and new employee conversion rate. * Strategic Decision Support: Assisted the General Manager in improving overall company process systems and rules, participated in drafting company-level policy documents, and served as a management pivot to ensure effective execution of strategic goals across departments. * Entity-level Operation of Foreign Trade Company: Deeply participated in and successfully implemented preparation for an independently accounted foreign trade company, responsible for financial budget assessment, talent recruitment planning, and global market expansion strategy design. * Global Market Expansion and Curation: Coordinated the full planning and execution of international industry exhibitions (such as booth design, technical documentation preparation, and overseas client invitations). In practical execution, became proficient in technical communication and order conversion for core products such as heavy-duty storage racks. * Advanced Business Reception: Designed and executed standardized reception workflows for foreign clients, responsible for high-level business interpretation, technical inspection accompaniment, and business negotiation, establishing and maintaining a professional international image for the company through sharp global vision and cross-cultural communication skills.
-
-<img src="work3.jpg" alt="Work segment photo" class="my-6 glass-line h-52 w-full rounded-lg object-cover" />
-
-2024.01 - 2025.02 | Shandong Deep Blue Animal Healthcare Co., Ltd. | R&D Supervisor / Product Program Lead
-Core Responsibilities and Achievements: * Full-lifecycle 0-1 Product Chain Management: Independently led the technical team from market gap research, formula R&D, and experimental validation to mass production implementation, and successfully developed more than 10 equine nutritional additive products. * International Standards Alignment and Compliance: Conducted in-depth research and ensured all products fully complied with anti-doping testing and nutritional standards required by major international horse-racing associations (such as ISBC), and products were recognized by international markets and mass-produced. * Integrated Coordination of R&D, Supply, and Sales: Successfully broke barriers between R&D, manufacturing, and sales; participated in packaging visual design, professional product manual writing, and market-access certification, creating new business growth points for the company.
-2014.09 - 2022.05 | China Horse Industry Association (CHA) and affiliated institutions | Served as Office Director, Executive Secretary, Chief Editor, and other roles
-Core Responsibilities and Achievements: * Coordination of Top International Events (Curation Experience): * Executive Secretary-General of the 15th World Equine Veterinary Conference: Fully coordinated an international-level conference held at the Great Hall of the People. Responsible for venue selection, theme setting, agenda confirmation, and successfully invited more than 80 foreign speakers from the UK, US, France, and other countries, achieving a complete integration of government and international resources. * 2014 World Akhal-Teke Conference: Participated in the top-level cultural event attended by President Xi Jinping, with professional capability in handling national-level external affairs events. * Senior Specialist of the World Horse Culture Forum: Responsible for connecting horse-industry leaders from more than 30 countries, defining speaker topics, and coordinating relationships between international organizations and local governments. * Industry Standards Formulation and Authoritative Publishing: * Led revisions of the "China Thoroughbred Registration Management Rules" and the "China Racing Rules", filling multiple domestic industry gaps, and handled horse import/export and international racing matters in coordination with ISBC. * Led publication of the "China Horse Industry Dictionary", "China Racing Yearbook", and "National Horse Industry Calendar", with deep accumulation in professional Chinese-English terminology and strong writing capability. * Digital Transformation and Media Matrix: Designed and built the China Horse Pedigree Network, China National Horse Industry Network, and Guoma Media App, and led the industry's informatization process and media discourse orientation management. * Large-scale Event Operations: Planned and established the "Chinese National Horse Racing" system; as event secretary, coordinated and implemented nearly one hundred high-spec events nationwide (including million-level events).
-________________________________________
-Core Skills
-•	Enterprise Management: Proficient in SOP process design, startup company operation management, strategic planning execution, team building, and performance assessment.
-•	Foreign Trade Practice: Proficient in global exhibition planning, customs policy, international logistics, cross-border business negotiation, and key-account maintenance.
-•	International Communication: Possesses cross-cultural thinking capability and is skilled at handling complex cross-cultural business conflicts and cooperation.
-•	Comprehensive Quality: Strong project orchestration capability, emergency-response awareness, senior-level public relations collaboration, and government relationship maintenance.
-            </div>
+•	综合素养： 极强的项目统筹能力、突发事件处理意识、高层公关协作及政府关系维护。</pre>
           </div>
-
-          <div class="grid gap-6 md:grid-cols-2">
-            <figure class="fade-in glass-line overflow-hidden rounded-xl bg-white/40 p-1">
-              <img src="work4.jpg" alt="Gallery work" class="h-56 w-full rounded-lg object-cover" />
-            </figure>
-            <figure class="fade-in glass-line overflow-hidden rounded-xl bg-white/40 p-1">
-              <img src="life2.jpg" alt="Gallery life" class="h-56 w-full rounded-lg object-cover" />
-            </figure>
-          </div>
-        </section>
+        </div>
       </section>
     </main>
 
     <script>
-      const toggle = document.getElementById("langToggle");
-      let lang = localStorage.getItem("siteLang") || "cn";
-
-      const switchLang = (nextLang) => {
-        document.documentElement.lang = nextLang === "cn" ? "zh-CN" : "en";
-        const panes = document.querySelectorAll(".lang-pane");
-        panes.forEach((pane) => {
-          pane.classList.remove("show");
-          pane.classList.remove("active");
-        });
-
-        setTimeout(() => {
-          panes.forEach((pane) => {
-            if (pane.getAttribute("data-lang") === nextLang) {
-              pane.classList.add("active");
-              requestAnimationFrame(() => pane.classList.add("show"));
-            }
-          });
-        }, 120);
-        localStorage.setItem("siteLang", nextLang);
+      const dictionary = {
+        en: {
+          "meta.title": "Jinfeng Zhang | Personal Portfolio",
+          "meta.description":
+            "Jinfeng (Hanzhi) Zhang — Cross-border strategy builder, global partnerships operator, and systems-minded business leader.",
+          "nav.about": "About",
+          "nav.work": "Work",
+          "nav.skills": "Skills",
+          "nav.contact": "Contact",
+          "nav.lang": "CN / EN",
+          "hero.kicker": "Personal Portfolio",
+          "hero.statement":
+            "Global Strategy Operator bridging policy-level diplomacy, technical systems, and cross-border business growth.",
+          "hero.cta": "Connect",
+          "about.kicker": "About",
+          "about.body":
+            "I build operations from zero to one and translate complexity into clear execution. From delivering nation-level equestrian conferences to scaling international trade structures, I combine strategic judgment with disciplined systems thinking to create outcomes that are globally fluent and operationally sustainable.",
+          "about.tag1": "Equestrian",
+          "about.tag2": "Scuba Diving",
+          "about.tag3": "Cross-cultural Communication",
+          "life.kicker": "Work & Life",
+          "life.title": "Discipline, Curiosity, and Inner Drive",
+          "life.body":
+            "My work is rigorous, but never mechanical. Time with horses and underwater training keeps my judgment calm, my focus precise, and my leadership deeply human in high-pressure contexts.",
+          "life.cap1": "Depth training, calm mindset",
+          "life.cap2": "Composure under pressure",
+          "life.cap3": "Curiosity beyond routine",
+          "exp.title": "Experience",
+          "exp.kicker": "Selected Work",
+          "exp.item1.date": "2025.03 — Present",
+          "exp.item1.role": "Executive Assistant to General Manager & Core Member, International Trade",
+          "exp.item1.company": "Shandong Fangding Storage Equipment Manufacturing Co., Ltd.",
+          "exp.item1.body":
+            "Designed end-to-end SOP infrastructure across export development, inquiry handling, client conversion, and post-sales delivery; also supported governance optimization and the launch blueprint of an independently accounted foreign trade entity.",
+          "exp.item2.date": "2024.01 — 2025.02",
+          "exp.item2.role": "R&D Lead / Product Program Owner",
+          "exp.item2.company": "Shandong Deep Blue Animal Healthcare",
+          "exp.item2.body":
+            "Directed full-lifecycle 0-1 development of 10+ equine nutrition products, ensuring compliance with international anti-doping and nutritional standards while integrating R&D with manufacturing, branding, and go-to-market execution.",
+          "exp.item3.date": "2014.09 — 2022.05",
+          "exp.item3.role": "Office Director / Executive Secretary / Chief Editor (Former Roles)",
+          "exp.item3.company": "China Horse Industry Association (CHA) & Affiliated Institutions",
+          "exp.item3.body":
+            "Orchestrated world-class equestrian forums and state-level diplomatic programs, coordinated with experts from 30+ countries, contributed to national standards, and drove digital transformation across industry media and knowledge platforms.",
+          "gallery.kicker": "Work Imprint",
+          "gallery.title": "Moments Behind the Milestones",
+          "gallery.body":
+            "Beyond boardrooms and conference floors, these frames record my real working rhythm: briefing teams, decoding technical details, and carrying ideas from concept to execution.",
+          "gallery.cap1": "Global conference coordination",
+          "gallery.cap2": "Cross-cultural briefing",
+          "gallery.cap3": "Execution in motion",
+          "gallery.cap4": "Trade show strategy",
+          "gallery.cap5": "System design workshop",
+          "skills.title": "Skills",
+          "skills.kicker": "Capabilities",
+          "skills.item1": "SOP Architecture",
+          "skills.item2": "0-1 Business Buildout",
+          "skills.item3": "International Trade Operations",
+          "skills.item4": "Cross-border Negotiation",
+          "skills.item5": "Conference Curation",
+          "skills.item6": "Government & Stakeholder Relations",
+          "skills.item7": "Bilingual Technical Communication",
+          "skills.item8": "Strategic Project Orchestration",
+          "contact.title": "Contact",
+          "contact.body":
+            "Open to strategic collaborations in international business development, conference curation, and cross-cultural operations.",
+          "contact.email": "Email",
+          "contact.linkedin": "LinkedIn",
+          "contact.instagram": "Instagram",
+          "raw.title": "Full Resume (Original Text)",
+          "raw.kicker": "No Abbreviation",
+          "raw.content": `个人简历
+姓名： 张金风（涵之） 政治面貌： 中共党员 联系电话： 17611575075 电子邮箱： coralzhanghorse@gmail.com 教育背景： * 中国农业大学 · 动物科学（农学） · 硕士研究生 (2016 - 2018) * 青岛农业大学 · 动物科学（马科学） · 本科 (2010 - 2014)
+________________________________________
+个人优势总结（核心竞争力）
+•	全链路从0到1构建能力： 具备极强的初创业务搭建与管理经验。曾独立主导赛马产品线从市场调研、研发到国际认证的全过程；成功协助建立独立核算的外贸公司，并从零搭建全套SOP体系，具备卓越的组织架构设计能力。
+•	顶层外事统筹与跨文化协作： 多年服务于国家级行业协会，拥有极强的高规格外事接待与国际谈判经验。曾统筹习近平主席出席的国际大会，深度对接ISBC、WEVA等国际组织及30余国专家。具备深刻的“白人思维”与跨文化共事能力，能够精准理解外方逻辑，实现高效的国际商务沟通。
+•	大型活动策展与品牌运营专家： 拥有顶尖的大型活动全案策划与执行经验，包括世界级大会的选址、议程设计、外籍讲师邀请及政府资源整合。具备深厚的媒体运营背景，曾主导行业数字化转型及多项国家级行业标准的制定。
+•	精细化管理与SOP标准化思维： 精通企业流程制度优化，擅长将复杂业务拆解为标准化操作手册（SOP），在提升团队效率、降低新人培养成本及确保业务可复制性方面有显著成果。
+•	复合型专业背景： 农学硕士出身，兼具严谨的科研思维与工业制造、国际贸易的实战经验，能迅速将技术语言转化为市场卖点，实现技术与商业的完美融合。
+________________________________________
+工作经历
+2025.03 - 至今 | 山东方鼎仓储设备制造有限公司 | 总经理助理（兼外贸部核心骨干）
+核心职责与成就： * 管理体系标准化： 全面负责外贸部从业务开发、询盘处理、客户跟踪到售后服务的全环节SOP（标准作业程序）搭建，实现业务流程闭环，显著提升了团队协作效率和新员工转化率。 * 战略决策辅助： 协助总经理完善公司整体流程制度与规章体系，参与起草公司级制度文件，作为管理中枢确保公司战略目标在各部门的有效落地。 * 外贸公司实体化运营： 深度参与并成功落地独立核算外贸公司的筹备工作，负责财务预算评估、人才招聘方案制定及全球市场拓展策略的规划。 * 全球市场攻坚与策展： 全程统筹国际行业展会的策划与执行（如展位设计、技术文档准备、海外客商邀约）。在实战中熟练处理重型货架等核心产品的技术交流与订单转化。 * 高阶商务接待： 制定并执行标准化外商接待流程，负责高规格商务翻译、技术考察陪同及商务谈判，凭借敏锐的国际化视野和跨文化沟通技巧，建立并维护了企业的专业国际形象。
+2024.01 - 2025.02 | 山东深蓝动物保健品公司 | 研发主管 / 产品项目负责人
+核心职责与成就： * 0-1产品链全生命周期管理： 独立带领技术团队，从市场空白点调研、配方研发、实验验证到量产落地，成功开发出10余款针对赛马的营养添加剂产品。 * 国际标准对接与合规： 深度研究并确保所有产品完全符合国际主流赛马协会（如ISBC）的禁药检测与营养标准，产品成功获得国际市场认可并实现大规模量产。 * 产供销一体化协同： 成功打破研发与生产、销售间的壁垒，参与包装视觉设计、专业产品手册编写及市场准入认证，为公司创造了新的业绩增长点。
+2014.09 - 2022.05 | 中国马业协会（CHA）及下属机构 | 历任办公室主任、执行秘书、主编等职
+核心职责与成就： * 国际顶级盛会统筹（策展经验）： * 第15届世界马医大会执行秘书长： 全权统筹在人民大会堂举办的国际级盛会。负责选址、主题制定、议程确认，并成功邀请来自英、美、法等国的80余名外籍讲师，实现了政府资源与国际资源的完美对接。 * 2014世界汗血马大会： 重点参与由习近平主席出席的顶级文化节活动，具备处理国家级外事活动的专业素养。 * 世界马文化论坛高级专员： 负责30多个国家马业领袖的对接，制定讲师课题，协调国际组织与地方政府关系。 * 行业标准制定与权威出版： * 带头修订《中国纯血马登记管理规则》及《中国赛马规则》，填补多项国内行业空白，负责与ISBC对接马匹进出口及国际赛事事务。 * 牵头出版《中国马业词典》、《中国赛马年鉴》及《国家马业日历》，具备深厚的专业中英文术语积累与文字功底。 * 数字化转型与媒体矩阵： 设计并搭建了中国马谱网、中国国家马业网及国马传媒APP，主导了行业的信息化进程与媒体舆论导向管理。 * 大型赛事运营： 策划并创立“中华民族大赛马”体系，作为赛事秘书在全国统筹策划并落地了近百场高规格赛事（含百万级赛事）。
+________________________________________
+核心技能
+•	企业管理： 精通SOP流程设计、初创公司运营管理、战略规划执行、团队建设与考核。
+•	外贸实务： 精通全球展会策划、海关政策、国际物流、跨境商务谈判及大客户维护。
+•	国际交流： 具备“白人思维”，擅长处理复杂的跨文化商业冲突与合作。
+•	综合素养： 极强的项目统筹能力、突发事件处理意识、高层公关协作及政府关系维护。`,
+        },
+        cn: {
+          "meta.title": "张金风 | 个人主页",
+          "meta.description": "张金风（涵之）——兼具国际协作视野与系统化执行能力的跨境战略运营者。",
+          "nav.about": "关于",
+          "nav.work": "经历",
+          "nav.skills": "能力",
+          "nav.contact": "联系",
+          "nav.lang": "中 / EN",
+          "hero.kicker": "个人主页",
+          "hero.statement": "连接高规格外事、技术系统与跨境增长的战略型运营者。",
+          "hero.cta": "联系我",
+          "about.kicker": "关于我",
+          "about.body": "我擅长从 0 到 1 搭建业务体系，也能将复杂问题转化为清晰可执行的路径。从国家级马业大会统筹到国际贸易组织建设，我始终以战略判断与系统化思维推进结果，兼顾国际语境与落地效率。",
+          "about.tag1": "马术 Equestrian",
+          "about.tag2": "深潜 Scuba Diving",
+          "about.tag3": "跨文化沟通 Cross-cultural Communication",
+          "life.kicker": "工作与生活",
+          "life.title": "纪律感、好奇心与内在驱动力",
+          "life.body": "我的工作强调严谨，但绝不机械。马术与潜水训练让我在高压场景下保持稳定判断、精确专注，也让我的领导方式始终保有人的温度。",
+          "life.cap1": "深度训练，稳定心智",
+          "life.cap2": "高压中的从容",
+          "life.cap3": "日常之外的探索",
+          "exp.title": "职业经历",
+          "exp.kicker": "核心履历",
+          "exp.item1.date": "2025.03 — 至今",
+          "exp.item1.role": "总经理助理（兼外贸核心骨干）",
+          "exp.item1.company": "山东方鼎仓储设备制造有限公司",
+          "exp.item1.body": "围绕业务开发、询盘管理、客户转化与售后交付，搭建外贸全流程 SOP 闭环；同时协同公司制度优化，并深度参与独立核算外贸公司的筹备方案制定。",
+          "exp.item2.date": "2024.01 — 2025.02",
+          "exp.item2.role": "研发主管 / 产品项目负责人",
+          "exp.item2.company": "山东深蓝动物保健品公司",
+          "exp.item2.body": "主导 10+ 款赛马营养产品的 0-1 全生命周期开发，确保符合国际禁药与营养标准，并打通研发、生产、品牌与上市执行链路。",
+          "exp.item3.date": "2014.09 — 2022.05",
+          "exp.item3.role": "办公室主任 / 执行秘书 / 主编（历任）",
+          "exp.item3.company": "中国马业协会及下属机构",
+          "exp.item3.body": "统筹世界级马业大会及国家级外事项目，对接 30+ 国专家，参与行业标准制定，并推动行业媒体与知识平台的数字化升级。",
+          "gallery.kicker": "工作印记",
+          "gallery.title": "履历背后的真实现场",
+          "gallery.body": "这些影像记录了我在会议统筹、技术沟通与项目推进中的日常节奏。履历中的每一项成果，都来自现场判断、跨文化协作与长期执行。",
+          "gallery.cap1": "国际会议统筹",
+          "gallery.cap2": "跨文化沟通现场",
+          "gallery.cap3": "项目推进时刻",
+          "gallery.cap4": "展会策略落地",
+          "gallery.cap5": "系统化方案设计",
+          "skills.title": "核心能力",
+          "skills.kicker": "能力矩阵",
+          "skills.item1": "SOP 流程架构",
+          "skills.item2": "0-1 业务搭建",
+          "skills.item3": "国际贸易运营",
+          "skills.item4": "跨境商务谈判",
+          "skills.item5": "大型会议策展",
+          "skills.item6": "政企关系协同",
+          "skills.item7": "中英技术沟通",
+          "skills.item8": "战略项目统筹",
+          "contact.title": "联系方式",
+          "contact.body": "期待在国际业务拓展、会议策展与跨文化运营领域展开高质量合作。",
+          "contact.email": "邮箱",
+          "contact.linkedin": "领英",
+          "contact.instagram": "Instagram",
+          "raw.title": "完整履历原文",
+          "raw.kicker": "不做删改",
+          "raw.content": `个人简历
+姓名： 张金风（涵之） 政治面貌： 中共党员 联系电话： 17611575075 电子邮箱： coralzhanghorse@gmail.com 教育背景： * 中国农业大学 · 动物科学（农学） · 硕士研究生 (2016 - 2018) * 青岛农业大学 · 动物科学（马科学） · 本科 (2010 - 2014)
+________________________________________
+个人优势总结（核心竞争力）
+•	全链路从0到1构建能力： 具备极强的初创业务搭建与管理经验。曾独立主导赛马产品线从市场调研、研发到国际认证的全过程；成功协助建立独立核算的外贸公司，并从零搭建全套SOP体系，具备卓越的组织架构设计能力。
+•	顶层外事统筹与跨文化协作： 多年服务于国家级行业协会，拥有极强的高规格外事接待与国际谈判经验。曾统筹习近平主席出席的国际大会，深度对接ISBC、WEVA等国际组织及30余国专家。具备深刻的“白人思维”与跨文化共事能力，能够精准理解外方逻辑，实现高效的国际商务沟通。
+•	大型活动策展与品牌运营专家： 拥有顶尖的大型活动全案策划与执行经验，包括世界级大会的选址、议程设计、外籍讲师邀请及政府资源整合。具备深厚的媒体运营背景，曾主导行业数字化转型及多项国家级行业标准的制定。
+•	精细化管理与SOP标准化思维： 精通企业流程制度优化，擅长将复杂业务拆解为标准化操作手册（SOP），在提升团队效率、降低新人培养成本及确保业务可复制性方面有显著成果。
+•	复合型专业背景： 农学硕士出身，兼具严谨的科研思维与工业制造、国际贸易的实战经验，能迅速将技术语言转化为市场卖点，实现技术与商业的完美融合。
+________________________________________
+工作经历
+2025.03 - 至今 | 山东方鼎仓储设备制造有限公司 | 总经理助理（兼外贸部核心骨干）
+核心职责与成就： * 管理体系标准化： 全面负责外贸部从业务开发、询盘处理、客户跟踪到售后服务的全环节SOP（标准作业程序）搭建，实现业务流程闭环，显著提升了团队协作效率和新员工转化率。 * 战略决策辅助： 协助总经理完善公司整体流程制度与规章体系，参与起草公司级制度文件，作为管理中枢确保公司战略目标在各部门的有效落地。 * 外贸公司实体化运营： 深度参与并成功落地独立核算外贸公司的筹备工作，负责财务预算评估、人才招聘方案制定及全球市场拓展策略的规划。 * 全球市场攻坚与策展： 全程统筹国际行业展会的策划与执行（如展位设计、技术文档准备、海外客商邀约）。在实战中熟练处理重型货架等核心产品的技术交流与订单转化。 * 高阶商务接待： 制定并执行标准化外商接待流程，负责高规格商务翻译、技术考察陪同及商务谈判，凭借敏锐的国际化视野和跨文化沟通技巧，建立并维护了企业的专业国际形象。
+2024.01 - 2025.02 | 山东深蓝动物保健品公司 | 研发主管 / 产品项目负责人
+核心职责与成就： * 0-1产品链全生命周期管理： 独立带领技术团队，从市场空白点调研、配方研发、实验验证到量产落地，成功开发出10余款针对赛马的营养添加剂产品。 * 国际标准对接与合规： 深度研究并确保所有产品完全符合国际主流赛马协会（如ISBC）的禁药检测与营养标准，产品成功获得国际市场认可并实现大规模量产。 * 产供销一体化协同： 成功打破研发与生产、销售间的壁垒，参与包装视觉设计、专业产品手册编写及市场准入认证，为公司创造了新的业绩增长点。
+2014.09 - 2022.05 | 中国马业协会（CHA）及下属机构 | 历任办公室主任、执行秘书、主编等职
+核心职责与成就： * 国际顶级盛会统筹（策展经验）： * 第15届世界马医大会执行秘书长： 全权统筹在人民大会堂举办的国际级盛会。负责选址、主题制定、议程确认，并成功邀请来自英、美、法等国的80余名外籍讲师，实现了政府资源与国际资源的完美对接。 * 2014世界汗血马大会： 重点参与由习近平主席出席的顶级文化节活动，具备处理国家级外事活动的专业素养。 * 世界马文化论坛高级专员： 负责30多个国家马业领袖的对接，制定讲师课题，协调国际组织与地方政府关系。 * 行业标准制定与权威出版： * 带头修订《中国纯血马登记管理规则》及《中国赛马规则》，填补多项国内行业空白，负责与ISBC对接马匹进出口及国际赛事事务。 * 牵头出版《中国马业词典》、《中国赛马年鉴》及《国家马业日历》，具备深厚的专业中英文术语积累与文字功底。 * 数字化转型与媒体矩阵： 设计并搭建了中国马谱网、中国国家马业网及国马传媒APP，主导了行业的信息化进程与媒体舆论导向管理。 * 大型赛事运营： 策划并创立“中华民族大赛马”体系，作为赛事秘书在全国统筹策划并落地了近百场高规格赛事（含百万级赛事）。
+________________________________________
+核心技能
+•	企业管理： 精通SOP流程设计、初创公司运营管理、战略规划执行、团队建设与考核。
+•	外贸实务： 精通全球展会策划、海关政策、国际物流、跨境商务谈判及大客户维护。
+•	国际交流： 具备“白人思维”，擅长处理复杂的跨文化商业冲突与合作。
+•	综合素养： 极强的项目统筹能力、突发事件处理意识、高层公关协作及政府关系维护。`,
+        },
       };
 
-      switchLang(lang);
-
-      toggle.addEventListener("click", () => {
-        lang = lang === "cn" ? "en" : "cn";
-        switchLang(lang);
-      });
+      const applyLanguage = (lang) => {
+        const root = document.querySelector("main");
+        root.classList.add("lang-fade");
+        window.setTimeout(() => {
+          document.documentElement.lang = lang === "cn" ? "zh-CN" : "en";
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            if (dictionary[lang][key]) el.textContent = dictionary[lang][key];
+          });
+          document.querySelectorAll("[data-i18n-content]").forEach((el) => {
+            const key = el.getAttribute("data-i18n-content");
+            if (dictionary[lang][key]) el.setAttribute("content", dictionary[lang][key]);
+          });
+          localStorage.setItem("siteLang", lang);
+          root.classList.remove("lang-fade");
+        }, 160);
+      };
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -241,9 +533,16 @@ Core Skills
             if (entry.isIntersecting) entry.target.classList.add("visible");
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
       );
-      document.querySelectorAll(".fade-in").forEach((node) => observer.observe(node));
+      document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+      const toggleBtn = document.getElementById("langToggle");
+      let currentLang = localStorage.getItem("siteLang") || "en";
+      applyLanguage(currentLang);
+      toggleBtn.addEventListener("click", () => {
+        currentLang = currentLang === "en" ? "cn" : "en";
+        applyLanguage(currentLang);
+      });
     </script>
   </body>
 </html>
